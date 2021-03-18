@@ -6,7 +6,7 @@ import static io.restassured.RestAssured.given;
 
 public class RestRestAssuredPut_Ex {
     @Test
-    public void test_Post() {
+    public void test_Put() {
         JSONObject requuest = new JSONObject();
         requuest.put("name", "Dhoni");
         requuest.put("job", "Criketor");
