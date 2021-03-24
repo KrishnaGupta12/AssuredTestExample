@@ -10,8 +10,8 @@ public class RestRestAssuredPut_Ex {
         JSONObject requuest = new JSONObject();
         requuest.put("name", "Dhoni");
         requuest.put("job", "Criketor");
-        System.out.println(requuest);
-        System.out.println(requuest.toJSONString());
+//        System.out.println(requuest);
+//        System.out.println(requuest.toJSONString());
 
         given()
                 .header("Content-Type","application/json")
