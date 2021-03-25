@@ -1,0 +1,13 @@
+TestRestAssuredForPost_Ex1.class
+BaseUriReqRes.class
+RestRestAssuredPut_Ex.class
+TestRestforGet.class
+TestReqRes.class
+TestRestAssuredForPost.class
+TestRestAssuredforPUT.class
+TestRAWithoutUsingMap_UsingJSON.class
+TestRA_Delete_Ex.class
+Test_RestAssured_Get2.class
+TestTestAssuredforGet1.class
+TestRA_Patch_Ex.class
+GetRequestWithQueryParam.class
