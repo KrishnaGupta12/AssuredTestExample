@@ -4,7 +4,7 @@ agent any
 stages{
 stage('Compile Stage')
     {
-  step{
+  steps{
           withMaven(maven:'MAVEN_HOME')
         {
             sh 'mvn clean compile'
@@ -13,7 +13,7 @@ stage('Compile Stage')
       }
     }
   stage('Testing Stage'){
-        step{
+        steps{
                 withMaven(mvn:'MAVEN_HOME')
                 {
                     sh 'mvn test'
@@ -22,7 +22,7 @@ stage('Compile Stage')
            }
 
   stage('Deployment Stage'){
-    step{
+    steps{
               withMaven(mvn:'MAVEN_HOME')
                   {
                       sh 'mvn deploy'
