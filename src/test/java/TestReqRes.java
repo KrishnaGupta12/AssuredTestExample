@@ -1,11 +1,20 @@
 import io.restassured.http.ContentType;
+import net.serenitybdd.core.Serenity;
+import net.serenitybdd.junit.runners.SerenityRunner;
+
+import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.lessThan;
 
+@RunWith(SerenityRunner.class)
 public class TestReqRes extends BaseUriReqRes {
+
 
 	@Test
 	public void testGetAllUsersPaged() {
@@ -20,7 +29,7 @@ public class TestReqRes extends BaseUriReqRes {
 				.body("data[0].last_name", equalTo("Lawson"))
 				.body("data[0].avatar", equalTo("https://reqres.in/img/faces/7-image.jpg"));
 	}
-	
+
 	@Test
 	public void testGetAllUsersPagedDelayed() {
 		given()
@@ -36,7 +45,7 @@ public class TestReqRes extends BaseUriReqRes {
 
 			.time(lessThan(4000L));
 	}
-	
+
 	@Test
 	public void testGetOnlyUser() {
 		given()
@@ -80,7 +89,7 @@ public class TestReqRes extends BaseUriReqRes {
 			.contentType("application/json")
 			.body("error", equalTo("Missing password"));
 	}
-	
+
 	@Test
 	public void testGetSingleUserNotFound() {
 		given()
@@ -90,7 +99,6 @@ public class TestReqRes extends BaseUriReqRes {
 			.statusCode(404);
 
 	}
-	
 	@Test
 	public void testGetApiUnknown() {
 		given()
@@ -105,7 +113,6 @@ public class TestReqRes extends BaseUriReqRes {
 			.body("data[0].pantone_value", equalTo("15-4020"));
 
 	}
-	
 	@Test
 	public void testGetApiSingleOnlyUnknown() {
 		given()
@@ -120,7 +127,6 @@ public class TestReqRes extends BaseUriReqRes {
 			.body("data.pantone_value", equalTo("17-2031"));
 
 	}
-	
 	@Test
 	public void testGetApiSingleOnlyUnknownNotFound() {
 		given()
@@ -129,7 +135,6 @@ public class TestReqRes extends BaseUriReqRes {
 		.then()
 			.statusCode(404);
 	}
-	
 	@Test
 	public void testPostCreate() {
 		final String json = "{\"name\": \"morpheus\", \"job\": \"leader\"}";
@@ -145,7 +150,6 @@ public class TestReqRes extends BaseUriReqRes {
 			.body("name", equalTo("morpheus"))
 			.body("job", equalTo("leader"));
 	}
-	
 	@Test
 	public void testPutUpdate() {
 		final String json = "{\"name\": \"Krishna\", \"job\": \"Software Developer\"}";
@@ -162,7 +166,6 @@ public class TestReqRes extends BaseUriReqRes {
 			.body("job", equalTo("Software Developer"))
 		.log().all();
 	}
-	
 	@Test
 	public void testPatch() {
 		final String json = "{\"name\": \"morpheus\", \"job\": \"zion resident\"}";
@@ -178,7 +181,6 @@ public class TestReqRes extends BaseUriReqRes {
 			.body("name", equalTo("morpheus"))
 			.body("job", equalTo("zion resident"));
 	}
-	
 	@Test
 	public void testDelete() {
 		given()
@@ -187,7 +189,6 @@ public class TestReqRes extends BaseUriReqRes {
 		.then()
 			.statusCode(204);
 	}
-	
 	@Test
 	public void testLoginSuccessful() {
 		final String json = "{\"email\": \"eve.holt@reqres.in\", \"password\": \"cityslicka\"}";
@@ -202,7 +203,6 @@ public class TestReqRes extends BaseUriReqRes {
 			.contentType("application/json")
 			.body("token", equalTo("QpwL5tke4Pnpja7X4"));
 	}
-	
 	@Test
 	public void testLoginUnsuccessful() {
 		final String json = "{\"email\": \"peter@klaven\"}";
